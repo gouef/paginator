@@ -113,18 +113,11 @@ func (p *Paginator) getItemsPerPage() int {
 	return p.itemsPerPage
 }
 
-func (p *Paginator) setItemCount(itemCount *int) *Paginator {
-	if itemCount == nil {
-		p.itemCount = nil
-		return p
+func (p *Paginator) setItemCount(itemCount int) *Paginator {
+	if itemCount < 0 {
+		itemCount = 0
 	}
-
-	value := *itemCount
-
-	if value < 0 {
-		value = 0
-	}
-	p.itemCount = &value
+	p.itemCount = &itemCount
 
 	return p
 }
