@@ -1,4 +1,4 @@
-module github.com/Gouef/paginator
+module github.com/gouef/paginator
 
 go 1.23.2
 
