@@ -68,6 +68,15 @@ func TestPaginator_GetPageCount_ItemCountNil(t *testing.T) {
 	assert.Nil(t, p.GetPageCount(), "PageCount should be nil when itemCount is nil")
 }
 
+func TestPaginator_GetFirstPage(t *testing.T) {
+	p := paginator.NewPaginator()
+
+	assert.Equal(t, 1, p.GetFirstPage(), "FirstPage should return the default base value 1")
+
+	p.SetBase(5)
+	assert.Equal(t, 5, p.GetFirstPage(), "FirstPage should return the updated base value")
+}
+
 func TestPaginator_GetLastPage(t *testing.T) {
 	p := paginator.NewPaginator()
 
