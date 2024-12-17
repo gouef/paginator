@@ -62,6 +62,12 @@ func TestPaginator_GetPageCount(t *testing.T) {
 	assert.Equal(t, 5, *p.GetPageCount())
 }
 
+func TestPaginator_GetPageCount_ItemCountNil(t *testing.T) {
+	p := paginator.NewPaginator()
+
+	assert.Nil(t, p.GetPageCount(), "PageCount should be nil when itemCount is nil")
+}
+
 func TestPaginator_GetLastPage(t *testing.T) {
 	p := paginator.NewPaginator()
 
@@ -72,6 +78,12 @@ func TestPaginator_GetLastPage(t *testing.T) {
 
 	p.SetItemsPerPage(20).SetItemCount(100)
 	assert.Equal(t, 5, *p.GetLastPage())
+}
+
+func TestPaginator_GetLastPage_ItemCountNil(t *testing.T) {
+	p := paginator.NewPaginator()
+
+	assert.Nil(t, p.GetLastPage(), "LastPage should return nil when itemCount is nil")
 }
 
 func TestPaginator_IsFirst(t *testing.T) {
@@ -111,6 +123,12 @@ func TestPaginator_GetCountdownOffset(t *testing.T) {
 	assert.Equal(t, 20, *countdown)
 }
 
+func TestPaginator_GetCountdownOffset_ItemCountNil(t *testing.T) {
+	p := paginator.NewPaginator()
+
+	assert.Nil(t, p.GetCountdownOffset(), "CountdownOffset should be nil when itemCount is nil")
+}
+
 func TestPaginator_GetLength(t *testing.T) {
 	p := paginator.NewPaginator()
 
@@ -119,6 +137,13 @@ func TestPaginator_GetLength(t *testing.T) {
 
 	p.SetPage(2)
 	assert.Equal(t, 10, p.GetLength())
+}
+
+func TestPaginator_GetLength_ItemCountNil(t *testing.T) {
+	p := paginator.NewPaginator()
+	p.SetItemsPerPage(10)
+
+	assert.Equal(t, 10, p.GetLength(), "Length should return itemsPerPage when itemCount is nil")
 }
 
 func TestPaginator_GetFirstItemOnPage(t *testing.T) {
@@ -131,6 +156,13 @@ func TestPaginator_GetFirstItemOnPage(t *testing.T) {
 	assert.Equal(t, 1, p.GetFirstItemOnPage())
 }
 
+func TestPaginator_GetFirstItemOnPage_ItemCountNil(t *testing.T) {
+	p := paginator.NewPaginator()
+	p.SetPage(2)
+
+	assert.Equal(t, 0, p.GetFirstItemOnPage(), "FirstItemOnPage should return 0 when itemCount is nil")
+}
+
 func TestPaginator_GetLastItemOnPage(t *testing.T) {
 	p := paginator.NewPaginator()
 
@@ -139,6 +171,13 @@ func TestPaginator_GetLastItemOnPage(t *testing.T) {
 
 	p.SetPage(1)
 	assert.Equal(t, 10, p.GetLastItemOnPage())
+}
+
+func TestPaginator_GetLastItemOnPage_ItemCountNil(t *testing.T) {
+	p := paginator.NewPaginator()
+	p.SetPage(2)
+
+	assert.Equal(t, 0, p.GetLastItemOnPage(), "LastItemOnPage should return 0 when itemCount is nil")
 }
 
 func test1(t *testing.T) {
