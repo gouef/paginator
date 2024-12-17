@@ -116,6 +116,14 @@ func TestPaginator_IsLast(t *testing.T) {
 	assert.False(t, p.IsLast())
 }
 
+func TestPaginator_IsLast_WhenItemCountIsNil(t *testing.T) {
+	p := paginator.NewPaginator()
+
+	isLast := p.IsLast()
+
+	assert.False(t, isLast, "Expected IsLast() to return false when itemCount is nil")
+}
+
 func TestPaginator_GetOffset(t *testing.T) {
 	p := paginator.NewPaginator()
 
