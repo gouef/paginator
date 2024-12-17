@@ -51,16 +51,23 @@ func (p *Paginator) GetLastPage() *int {
 }
 
 func (p *Paginator) GetFirstItemOnPage() int {
-	if *p.GetItemCount() != 0 {
-		i := p.offset + 1
-		return i
+	if p.GetItemCount() == nil || *p.GetItemCount() == 0 {
+		return 0
 	}
 
-	return 0
+	offset := p.GetOffset()
+	return offset + 1
 }
 
 func (p *Paginator) GetLastItemOnPage() int {
-	return p.offset + p.length
+	if p.GetItemCount() == nil || *p.GetItemCount() == 0 {
+		return 0
+	}
+
+	offset := p.GetOffset()
+	length := p.GetLength()
+
+	return offset + length
 }
 
 func (p *Paginator) SetBase(base int) *Paginator {
@@ -134,7 +141,8 @@ func (p *Paginator) GetCountdownOffset() *int {
 	if p.GetItemCount() == nil {
 		return nil
 	}
-	val := max(0, *p.GetItemCount()-(p.GetPageIndex()-1)*p.GetItemsPerPage())
+
+	val := max(0, *p.GetItemCount()-p.GetPageIndex()*p.GetItemsPerPage())
 	return &val
 }
 func (p *Paginator) GetLength() int {
