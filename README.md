@@ -8,7 +8,7 @@ Paginator
 [![Go Report Card](https://goreportcard.com/badge/github.com/gouef/paginator)](https://goreportcard.com/report/github.com/gouef/paginator)
 [![codecov](https://codecov.io/github/gouef/paginator/branch/main/graph/badge.svg?token=YUG8EMH6Q8)](https://codecov.io/github/gouef/paginator)
 
-## Vesions
+## Versions
 ![Stable Version](https://img.shields.io/github/v/release/gouef/paginator?label=Stable&labelColor=green)
 ![GitHub Release](https://img.shields.io/github/v/release/gouef/paginator?label=RC&include_prereleases&filter=*rc*&logoSize=diago)
 ![GitHub Release](https://img.shields.io/github/v/release/gouef/paginator?label=Beta&include_prereleases&filter=*beta*&logoSize=diago)
